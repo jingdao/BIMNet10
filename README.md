@@ -3,6 +3,21 @@ BIMNet10
 
 ![Dataset](dataset.png?raw=true)
 
+The H5 files consists of building element point clouds in 10 categories.
+The "data" MxNx3 matrix represents M objects, each with N points, each with x,y,z coordinates.
+The "label" M - length array represents an integer class label from 0 to 9.
+
+	bimnet10_train.h5:
+	<HDF5 dataset "data": shape (153, 2048, 3), type "<f4">
+	<HDF5 dataset "label": shape (153,), type "|u1">
+	bimnet10_test.h5 
+	<HDF5 dataset "data": shape (47, 2048, 3), type "<f4">
+	<HDF5 dataset "label": shape (47,), type "|u1">
+	bimnet10_test_deform.h5 
+	<HDF5 dataset "data": shape (564, 2048, 3), type "<f4">
+	<HDF5 dataset "label": shape (564,), type "|u1">
+	
+
 | Object  | Count |
 | ------  | ----- |
 | balcony | 9     |
