@@ -32,8 +32,35 @@ The "label" M - length array represents an integer class label from 0 to 9.
 | window  | 17    |
 | *total* | *200* |
 
-Code
-----
+Point Cloud Deformation Code
+------
+
+	pcl_viewer door.pcd
+	
+![Door1](deform1.png?raw=true)
+
+	python deform_pcd.py door.pcd out.pcd --rotate; pcl_viewer out.pcd	
+
+![Door2](deform2.png?raw=true)
+
+	python deform_pcd.py door.pcd out.pcd --noise; pcl_viewer out.pcd	
+
+![Door3](deform3.png?raw=true)
+
+	python deform_pcd.py door.pcd out.pcd --bend; pcl_viewer out.pcd	
+
+![Door4](deform4.png?raw=true)
+
+	python deform_pcd.py door.pcd out.pcd --truncate; pcl_viewer out.pcd	
+
+![Door5](deform5.png?raw=true)
+
+	python deform_pcd.py door.pcd out.pcd --rotate --noise --bend --truncate; pcl_viewer out.pcd	
+
+![Door6](deform6.png?raw=true)
+
+Network Code
+------
 
 Convert point clouds from H5 file to folder of PCD files:
 
