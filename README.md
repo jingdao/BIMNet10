@@ -32,6 +32,25 @@ The "label" M - length array represents an integer class label from 0 to 9.
 | window  | 17    |
 | *total* | *200* |
 
+Code
+----
+
+Convert point clouds from H5 file to folder of PCD files:
+
+	python h52pcd.py bimnet10_train.h5 pcd/
+
+Convert folder of point clouds in PCD format to H5 file:
+
+	python pcd2h5.py pcd/ bimnet10_train.h5
+
+Visualize point cloud data (requires [Point Cloud Library](http://pointclouds.org/))
+
+	pcl_viewer pcd/0-cloud.pcd
+
+Train / Test Network:
+
+	python bimnet.py
+
 Citation
 --------
 
