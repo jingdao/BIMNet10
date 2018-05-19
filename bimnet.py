@@ -72,7 +72,7 @@ class BimNet():
 		for i in range(NUM_CONV_LAYERS):
 			conv_param = NUM_FEATURE_CHANNELS
 			self.kernel[i] = tf.get_variable('conv'+str(i)+'/weights', [1,3 if i==0 else 1, 1 if i==0 else NUM_FEATURE_CHANNELS, conv_param], initializer=tf.contrib.layers.xavier_initializer(), dtype=tf.float32)
-			self.bias[i] = tf.get_variable('conv'+str(i)+'/biases', [conv_param], initializer=tf.contrib.layers.xavier_initializer(), dtype=tf.float32)
+			self.bias[i] = tf.get_variable('conv'+str(i)+'/biases', [conv_param], initializer=tf.constant_initializer(0.0), dtype=tf.float32)
 			self.conv[i] = tf.nn.conv2d(self.input if i==0 else self.pool[i-1], self.kernel[i], [1, 1, 1, 1], padding='VALID')
 			self.conv[i] = tf.nn.bias_add(self.conv[i], self.bias[i])
 			self.conv[i] = batch_norm_template(i,self.conv[i],self.is_training_pl,[0,1,2])

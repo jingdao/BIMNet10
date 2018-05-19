@@ -20,8 +20,8 @@ The "label" M - length array represents an integer class label from 0 to 9.
 
 | Object  | Count |
 | ------  | ----- |
-| balcony | 9     |
-| beam    | 5     |
+| balcony | 15    |
+| beam    | 15    |
 | column  | 30    |
 | door    | 31    |
 | fence   | 37    |
@@ -30,7 +30,7 @@ The "label" M - length array represents an integer class label from 0 to 9.
 | stairs  | 15    |
 | wall    | 24    |
 | window  | 17    |
-| *total* | *200* |
+| *total* | *216* |
 
 Point Cloud Deformation Code
 ------
@@ -61,6 +61,10 @@ Point Cloud Deformation Code
 
 Network Code
 ------
+
+Convert CAD model (PLY file) to point cloud (PCD file):
+
+	python mesh2pcd.py door.ply door.pcd
 
 Convert point clouds from H5 file to folder of PCD files:
 
