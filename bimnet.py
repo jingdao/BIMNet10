@@ -84,7 +84,7 @@ class BimNet():
 		self.fc[0] = tf.reshape(self.pool[-1], [batch_size, -1])
 		for i in range(NUM_FC_LAYERS):
 			self.fc_weights[i] = tf.get_variable('fc_weights'+str(i), [self.fc[i].get_shape().as_list()[1], NUM_FC_CHANNELS], initializer=tf.contrib.layers.xavier_initializer(), dtype=tf.float32)
-			self.fc_bias[i] = tf.get_variable('fc_bias'+str(i), [NUM_FC_CHANNELS], initializer=tf.contrib.layers.xavier_initializer(), dtype=tf.float32)
+			self.fc_bias[i] = tf.get_variable('fc_bias'+str(i), [NUM_FC_CHANNELS], initializer=tf.constant_initializer(0.0), dtype=tf.float32)
 			self.fc[i+1] = tf.matmul(self.fc[i], self.fc_weights[i])
 			self.fc[i+1] = tf.nn.bias_add(self.fc[i+1], self.fc_bias[i])
 			self.fc[i+1] = batch_norm_template(self.fc[i+1],self.is_training_pl,[0,])
@@ -92,7 +92,7 @@ class BimNet():
 
 		#output
 		self.fc_weights[-1] = tf.get_variable('pred/weights'+str(NUM_FC_LAYERS), [self.fc[-1].get_shape().as_list()[1], num_class], initializer=tf.contrib.layers.xavier_initializer(), dtype=tf.float32)
-		self.fc_bias[-1] = tf.get_variable('pred/biases'+str(NUM_FC_LAYERS), [num_class], initializer=tf.contrib.layers.xavier_initializer(), dtype=tf.float32)
+		self.fc_bias[-1] = tf.get_variable('pred/biases'+str(NUM_FC_LAYERS), [num_class], initializer=tf.constant_initializer(0.0), dtype=tf.float32)
 		self.output = tf.matmul(self.fc[-1], self.fc_weights[-1])
 		self.output = tf.nn.bias_add(self.output, self.fc_bias[-1])
 		
